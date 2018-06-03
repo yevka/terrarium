@@ -1,0 +1,14 @@
+pathFon: 
+pathBackgroundBoard:
+pathBoard:
+
+colorText:
+fonColorTextEdit:
+fontTextEdit:
+fontSizeTextEdit:
+
+path_w:
+path_W:
+path_b:
+path_B:
+path_B:
