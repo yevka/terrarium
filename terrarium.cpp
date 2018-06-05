@@ -1,4 +1,4 @@
-#include "Terrarium.h"
+#include "terrarium.h"
 
 Terrarium::Terrarium(const QSize screenSize, QWidget* parent) : QMainWindow(parent) {
   QSize resize = screenSize;
