@@ -1,42 +1,31 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include <QCoreApplication>
 #include <QGraphicsScene>
-#include <QGraphicsSceneMouseEvent>
-#include <QGraphicsRectItem>
-
 #include "cell.h"
-#include "info.h"
 
 class Scene : public QGraphicsScene {
   Q_OBJECT
  public:
-  explicit Scene(QObject* parent = 0);
+  explicit Scene(QObject* parent = nullptr);
 
   void setPosition(const QString& pos);
   void setBoard(QPixmap pix);
-  void setStartTimer(int min, int sec);
-
-  void addCell(Cell cell);
+  void addCell(const Cell cell);
 
  protected:
   virtual void mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent);
 
- signals:
-
- public slots:
+private:
+  QVector<QPointF> coordinatesCells(const QPointF& startPoint,
+                                    const QSize& cell);
 
  private:
+  QGraphicsPixmapItem* checkerBoard;
   QGraphicsPixmapItem* fonBoard;
   Cell cell[32];
   QString position;
 
-  Info infoUp;
-  Info infoDown;
-
-  QVector<QPointF> coordinatesCells(const QPointF& startPoint,
-                                    const QSize& cell);
 };
 
 #endif  // SCENE_H

@@ -3,8 +3,6 @@
 
 #include <QGraphicsView>
 
-//class QResizeEvent;
-
 class GraphicsView : public QGraphicsView {
  public:
   GraphicsView(QGraphicsScene *scene);
@@ -13,7 +11,7 @@ class GraphicsView : public QGraphicsView {
   QGraphicsScene *scene_;
 
  protected:
-  virtual void resizeEvent(QResizeEvent *);
+  virtual void resizeEvent(QResizeEvent *event);
 };
 
 #endif  // GRAPHICSVIEW_H

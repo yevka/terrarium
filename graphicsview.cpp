@@ -1,7 +1,5 @@
 #include "graphicsview.h"
 
-#include <QGraphicsSceneMouseEvent>
-
 GraphicsView::GraphicsView(QGraphicsScene *scene) : QGraphicsView(scene), scene_(scene) {
   this->setAlignment(Qt::AlignCenter);
   this->setFrameStyle(QFrame::NoFrame);
@@ -10,6 +8,7 @@ GraphicsView::GraphicsView(QGraphicsScene *scene) : QGraphicsView(scene), scene_
   this->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
 }
 
-void GraphicsView::resizeEvent(QResizeEvent *) {
+void GraphicsView::resizeEvent(QResizeEvent *event) {
+  QGraphicsView::resizeEvent(event);
   fitInView(scene_->sceneRect(), Qt::KeepAspectRatio);
 }

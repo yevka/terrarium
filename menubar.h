@@ -6,7 +6,7 @@
 class MenuBar : public QMenuBar {
   Q_OBJECT
  public:
-  explicit MenuBar(QWidget* parent = 0);
+  explicit MenuBar(QWidget* parent = nullptr);
 
  signals:
   // menuGame
@@ -14,7 +14,6 @@ class MenuBar : public QMenuBar {
 
   // menuView
   void groupFon(QAction*);
-  void groupBoard(QAction*);
   void font();
   void colorTextEdit();
 
@@ -29,31 +28,11 @@ class MenuBar : public QMenuBar {
 
   // menuView
   QActionGroup* actionGroupFon;
-  QAction* actionAqua;
-  QAction* actionBrown;
-  QAction* actionCanva;
   QAction* actionDarkBlue;
-  QAction* actionGray;
   QAction* actionLightBlue;
-  QAction* actionCherry;
-
-  QActionGroup* actionGroupBoard;
-  QAction* actionAshTree;
-  QAction* actionAutumn;
-  QAction* actionGreen;
-  QAction* actionLime;
-  QAction* actionMahogany;
-  QAction* actionNavajoWhite;
-  QAction* actionOrangeMarble;
-  QAction* actionPlywood;
-  QAction* actionSkyBlue;
-  QAction* actionWood;
 
   QAction* actionFont;
   QAction* actionColorTextEdit;
-
-  // setting
-  QAction* actionSettingEngine;
 
   // menuAbout
   QAction* actionAbout;
@@ -61,7 +40,6 @@ class MenuBar : public QMenuBar {
   QMenu* menuFile;
   QMenu* menuView;
   QMenu* subMenuViewFon;
-  QMenu* subMenuViewBoard;
 
   QMenu* menuGame;
   QMenu* menuAbout;

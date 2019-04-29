@@ -3,9 +3,6 @@
 #include <QDebug>
 
 Cell::Cell() {
-  // android
-  // QString dir = "assets:";
-
   ws = new QGraphicsPixmapItem;
   ws->setShapeMode(QGraphicsPixmapItem::MaskShape);
   ws->setTransformationMode(Qt::SmoothTransformation);
@@ -52,38 +49,32 @@ void Cell::setPos(const QPointF &pos) {
   yellowFrame->setPos(pos);
 }
 
-void Cell::setCell(const QString &cell) {
-  if (cell.size() > 2) return;
-
-  if (cell == "W") {
+void Cell::setCell(const uchar &cell) {
+  if (cell == 'W') {
     ws->setVisible(false);
     wd->setVisible(true);
     bs->setVisible(false);
     bd->setVisible(false);
   }
-
-  if (cell == "w") {
+  else if (cell == 'w') {
     ws->setVisible(true);
     wd->setVisible(false);
     bs->setVisible(false);
     bd->setVisible(false);
   }
-
-  if (cell == "B") {
+  else if (cell == 'B') {
     ws->setVisible(false);
     wd->setVisible(false);
     bs->setVisible(false);
     bd->setVisible(true);
   }
-
-  if (cell == "b") {
+  else if (cell == 'b') {
     ws->setVisible(false);
     wd->setVisible(false);
     bs->setVisible(true);
     bd->setVisible(false);
   }
-
-  if (cell == ".") {
+  else if (cell == '.') {
     ws->setVisible(false);
     wd->setVisible(false);
     bs->setVisible(false);

@@ -4,16 +4,15 @@
 #include "scene.h"
 #include "graphicsview.h"
 
-class Board {
+class CheckersBoard {
  public:
-  Board();
+  CheckersBoard();
   GraphicsView* boardView() const { return view; }
 
   void setPosition(const QString& pos);
   QString getPosition() const;
   void setFon(QPixmap pix);
   void setBoard(QPixmap pix);
-  void setStartTimer(int min, int sec);
 
  private:
   Scene* scene;

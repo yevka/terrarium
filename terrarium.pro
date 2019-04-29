@@ -10,13 +10,12 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Terrarium
 TEMPLATE = app
+CONFIG += c++14
 
 HEADERS  += terrarium.h             \
             board.h                 \
             graphicsview.h          \
-            info.h                  \
             menubar.h               \
-            newgameform.h           \
             scene.h                 \
             cell.h
 
@@ -24,18 +23,9 @@ SOURCES +=  main.cpp                 \
             terrarium.cpp            \
             board.cpp                \
             graphicsview.cpp         \
-            info.cpp                 \
             menubar.cpp              \
-            newgameform.cpp          \
             scene.cpp                \
             cell.cpp
-
-CONFIG += mobility
-MOBILITY =
-
-OTHER_FILES +=
-
-ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 RESOURCES += \
     resource.qrc

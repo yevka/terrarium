@@ -9,7 +9,7 @@ class Cell {
   Cell();
 
   void setPos(const QPointF& pos);
-  void setCell(const QString& cell);
+  void setCell(const uchar& cell);
 
   void setLastMove(bool val);
   void setYellowFrame(bool val);

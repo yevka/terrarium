@@ -1,4 +1,10 @@
 #include "terrarium.h"
+#include <QTextEdit>
+#include <QString>
+#include <QSplitter>
+#include <QColorDialog>
+#include <QFontDialog>
+#include <QPalette>
 
 Terrarium::Terrarium(const QSize screenSize, QWidget* parent) : QMainWindow(parent) {
   QSize resize = screenSize;
@@ -10,6 +16,10 @@ Terrarium::Terrarium(const QSize screenSize, QWidget* parent) : QMainWindow(pare
   central.setX((screenSize.width() - resize.width()) / 2);
   central.setY((screenSize.height() - resize.height()) / 2);
   this->move(central);
+
+  board.setFon(QPixmap(":/Skin/fon/Light blue.png"));
+  board.setBoard(QPixmap(":/Skin/background board/lightwood.jpg"));
+  board.setPosition("bbbbbbbbbbbb........wwwwwwwwwwww");
 
   QString party = "Протокол партии:\r\n\r\n";
 
@@ -38,12 +48,6 @@ Terrarium::Terrarium(const QSize screenSize, QWidget* parent) : QMainWindow(pare
   this->setCentralWidget(splitter);
 
   createMenu();
-
-  newGameForm = new NewGameForm(this->window());
-  connect(newGameForm, SIGNAL(startClicked(DataGameForm)), SLOT(startClicked(DataGameForm)));
-
-  // android
-  // dir = "assets:/";
 }
 
 void Terrarium::createMenu() {
@@ -55,7 +59,6 @@ void Terrarium::createMenu() {
 
   // menuView
   connect(menuBar, SIGNAL(groupFon(QAction*)), SLOT(setFon(QAction*)));
-  connect(menuBar, SIGNAL(groupBoard(QAction*)), SLOT(setBoard(QAction*)));
   connect(menuBar, SIGNAL(font()), SLOT(font()));
   connect(menuBar, SIGNAL(colorTextEdit()), SLOT(colorTextEdit()));
 
@@ -65,7 +68,7 @@ void Terrarium::createMenu() {
 
 // menuGame
 void Terrarium::newGame() {
-  newGameForm->showNewGameForm(this);
+
 }
 
 // menuView
@@ -89,7 +92,6 @@ void Terrarium::colorTextEdit() {
   QPalette pal = protocolParty->palette();
   QColor col = pal.color(QPalette::Active, QPalette::Base);
   QColor color = QColorDialog::getColor(col, this, "Select Color");
-
   if (color.isValid()) {
     pal.setColor(QPalette::Active, QPalette::Base, color);
     pal.setColor(QPalette::Inactive, QPalette::Base, color);
@@ -100,31 +102,9 @@ void Terrarium::colorTextEdit() {
 
 // menuAbout
 void Terrarium::about() {
-
+  // todo
 }
 
-void Terrarium::startClicked(DataGameForm data) {
-  newGameForm->close();
-
-  // 5+1     min + sec
-  int pos = data.timeParty.indexOf("+");
-
-  if (pos != -1) {
-    int min = data.timeParty.left(pos).toInt();
-    int sec = 0;
-
-    if (data.timeParty.size() > pos + 1) {
-      sec = data.timeParty.right(pos).toInt();
-    }
-
-    board.setStartTimer(min, sec);
-  } else {
-    if (data.timeParty.size() > 0) {
-      board.setStartTimer(data.timeParty.toInt(), 0);
-    }
-  }
-}
-
-void Terrarium::closeEvent(QCloseEvent *close) {
-//    if( close->isAccepted() ) newGameForm->close();
+void Terrarium::closeEvent(QCloseEvent *) {
+  // todo
 }
