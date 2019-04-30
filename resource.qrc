@@ -10,18 +10,5 @@
         <file>Skin/draughts/wd.png</file>
         <file>Skin/draughts/ws.png</file>
         <file>Skin/draughts/yellowFrame.png</file>
-        <file>Skin/fon/Aqua.png</file>
-        <file>Skin/fon/Brown.png</file>
-        <file>Skin/fon/Canva.png</file>
-        <file>Skin/fon/Cherry.png</file>
-        <file>Skin/fon/Dark blue.png</file>
-        <file>Skin/fon/Gray.png</file>
-        <file>Skin/fon/Light blue.png</file>
-        <file>Skin/priority/priorityDown.png</file>
-        <file>Skin/priority/priorityLeft.png</file>
-        <file>Skin/priority/priorityRight.png</file>
-        <file>Skin/priority/priorityUp.png</file>
-        <file>Skin/settings default.txt</file>
-        <file>Skin/settings user.txt</file>
     </qresource>
 </RCC>

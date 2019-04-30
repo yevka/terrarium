@@ -9,38 +9,19 @@ class MenuBar : public QMenuBar {
   explicit MenuBar(QWidget* parent = nullptr);
 
  signals:
-  // menuGame
   void newGame();
-
-  // menuView
-  void groupFon(QAction*);
   void font();
-  void colorTextEdit();
-
-  // menuAbout
   void about();
 
  public slots:
 
  private:
-  // menuGame
   QAction* actionNewGame;
-
-  // menuView
-  QActionGroup* actionGroupFon;
-  QAction* actionDarkBlue;
-  QAction* actionLightBlue;
-
   QAction* actionFont;
-  QAction* actionColorTextEdit;
-
-  // menuAbout
   QAction* actionAbout;
 
   QMenu* menuFile;
   QMenu* menuView;
-  QMenu* subMenuViewFon;
-
   QMenu* menuGame;
   QMenu* menuAbout;
 

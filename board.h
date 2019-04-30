@@ -11,7 +11,6 @@ class CheckersBoard {
 
   void setPosition(const QString& pos);
   QString getPosition() const;
-  void setFon(QPixmap pix);
   void setBoard(QPixmap pix);
 
  private:

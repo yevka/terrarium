@@ -2,7 +2,6 @@
 #include <QTextEdit>
 #include <QString>
 #include <QSplitter>
-#include <QColorDialog>
 #include <QFontDialog>
 #include <QPalette>
 
@@ -17,25 +16,25 @@ Terrarium::Terrarium(const QSize screenSize, QWidget* parent) : QMainWindow(pare
   central.setY((screenSize.height() - resize.height()) / 2);
   this->move(central);
 
-  board.setFon(QPixmap(":/Skin/fon/Light blue.png"));
   board.setBoard(QPixmap(":/Skin/background board/lightwood.jpg"));
   board.setPosition("bbbbbbbbbbbb........wwwwwwwwwwww");
 
   QString party = "Протокол партии:\r\n\r\n";
 
   protocolParty = new QTextEdit;
-  QPalette pal = protocolParty->palette();
-  pal.setColor(QPalette::Active, QPalette::Base, QColor(255, 230, 187));
-  pal.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 230, 187));
-  protocolParty->setPalette(pal);
-
+  QPalette pallete = protocolParty->palette();
+  QColor color; color.setRgb(75, 116, 155);
+  pallete.setColor(QPalette::Base, color);
+  protocolParty->setPalette(pallete);
   protocolParty->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
   protocolParty->setMinimumWidth(150);
   protocolParty->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
   protocolParty->setAlignment(Qt::AlignCenter);
   protocolParty->setReadOnly(true);
-  protocolParty->setFont(QFont("MS Shell Dlg 2", 14, QFont::Normal));
+  QFont font("MS Shell Dlg 2", 16, QFont::Bold);
+  font.setUnderline(true);
+  protocolParty->setFont(font);
+  protocolParty->setTextColor(Qt::white);
   protocolParty->setText(party);
 
   splitter = new QSplitter;
@@ -53,54 +52,23 @@ Terrarium::Terrarium(const QSize screenSize, QWidget* parent) : QMainWindow(pare
 void Terrarium::createMenu() {
   menuBar = new MenuBar(this);
   this->setMenuBar(menuBar);
-
-  // menuGame
-  connect(menuBar, SIGNAL(newGame()), this, SLOT(newGame()));
-
-  // menuView
-  connect(menuBar, SIGNAL(groupFon(QAction*)), SLOT(setFon(QAction*)));
+  connect(menuBar, SIGNAL(newGame()), SLOT(newGame()));
   connect(menuBar, SIGNAL(font()), SLOT(font()));
-  connect(menuBar, SIGNAL(colorTextEdit()), SLOT(colorTextEdit()));
-
-  // menuAbout
   connect(menuBar, SIGNAL(about()), SLOT(about()));
 }
 
-// menuGame
 void Terrarium::newGame() {
 
 }
 
-// menuView
-void Terrarium::setFon(QAction* pFon) {
-  board.setFon(QPixmap(":/Skin/fon/" + pFon->text()));
-}
-
-void Terrarium::setBoard(QAction* pBoard) {
-  board.setBoard(QPixmap(":/Skin/background board/" + pBoard->text()));
-}
-
 void Terrarium::font() {
-  bool ok;
+  bool ok = false;
   QFont font = QFontDialog::getFont(&ok, protocolParty->font());
   if (ok) {
     protocolParty->setFont(font);
   }
 }
 
-void Terrarium::colorTextEdit() {
-  QPalette pal = protocolParty->palette();
-  QColor col = pal.color(QPalette::Active, QPalette::Base);
-  QColor color = QColorDialog::getColor(col, this, "Select Color");
-  if (color.isValid()) {
-    pal.setColor(QPalette::Active, QPalette::Base, color);
-    pal.setColor(QPalette::Inactive, QPalette::Base, color);
-    protocolParty->setPalette(pal);
-    protocolParty->setAutoFillBackground(true);
-  }
-}
-
-// menuAbout
 void Terrarium::about() {
   // todo
 }

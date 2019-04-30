@@ -27,16 +27,12 @@ class Terrarium : public QMainWindow {
   QSplitter* splitter;
   MenuBar* menuBar;
 
+ private:
   void createMenu();
 
  private slots:
   void newGame();
-
-  void setFon(QAction* pFon);
-  void setBoard(QAction* pBoard);
   void font();
-  void colorTextEdit();
-
   void about();
 };
 

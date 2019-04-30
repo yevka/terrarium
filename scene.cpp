@@ -4,7 +4,7 @@
 
 Scene::Scene(QObject* parent) : QGraphicsScene(parent) {
   checkerBoard = new QGraphicsPixmapItem(QPixmap(":/Skin/board/board0.png"));
-  fonBoard = new QGraphicsPixmapItem(checkerBoard);
+  fonBoard = new QGraphicsPixmapItem();
   this->addItem(fonBoard);
   this->addItem(checkerBoard);
   QVector<QPointF> coordinates = coordinatesCells(QPointF(52.0, 52.0), QSize(87, 87));
@@ -18,7 +18,6 @@ QVector<QPointF> Scene::coordinatesCells(const QPointF& startPoint,
                                          const QSize& cell) {
   QVector<QPointF> coordinates;
   coordinates.reserve(32);
-
   QPointF start(startPoint.x(), startPoint.y());
   for (int i = 1; i <= 8; ++i) {
     start.setX(startPoint.x());
@@ -30,7 +29,6 @@ QVector<QPointF> Scene::coordinatesCells(const QPointF& startPoint,
         }
         coordinates.push_back(start);
       }
-
       if (!(i % 2)) {
         if (j > 0) {
           start += QPointF(cell.width() * 2.0, 0.0);
@@ -40,7 +38,6 @@ QVector<QPointF> Scene::coordinatesCells(const QPointF& startPoint,
     }
     start += QPointF(0.0, cell.width());
   }
-
   return coordinates;
 }
 
@@ -52,6 +49,9 @@ void Scene::setPosition(const QString& pos) {
 }
 
 void Scene::setBoard(QPixmap pix) {
+  pix = pix.scaled(checkerBoard->boundingRect().size().toSize(),
+    Qt::AspectRatioMode::IgnoreAspectRatio,
+    Qt::TransformationMode::SmoothTransformation);
   fonBoard->setPixmap(pix);
 }
 
