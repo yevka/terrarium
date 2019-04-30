@@ -10,8 +10,8 @@ class GraphicsView : public QGraphicsView {
  private:
   QGraphicsScene *scene_;
 
- protected:
-  virtual void resizeEvent(QResizeEvent *event);
+ private:
+  void resizeEvent(QResizeEvent *event) override;
 };
 
 #endif  // GRAPHICSVIEW_H

@@ -1,5 +1,6 @@
 #include "scene.h"
 #include <QGraphicsSceneMouseEvent>
+#include <QDebug>
 
 Scene::Scene(QObject* parent) : QGraphicsScene(parent) {
   checkerBoard = new QGraphicsPixmapItem(QPixmap(":/Skin/board/board0.png"));
@@ -62,10 +63,21 @@ void Scene::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent) {
   if (mouseEvent->button() == Qt::LeftButton) {
     for (int i = 0; i < 32; ++i) {
       QPointF point = cell[i].mapFromScene(mouseEvent->scenePos());
-      bool contains = cell[i].contains(point);
-      if (contains) {
+      if (cell[i].contains(point)) {
         // move generator
       }
     }
   }
+  QGraphicsScene::mousePressEvent(mouseEvent);
+}
+
+void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) {
+  for (int i = 0; i < 32; ++i) {
+    QPointF point = cell[i].mapFromScene(mouseEvent->scenePos());
+    if (cell[i].contains(point)) {
+      qDebug() << "point: " << mouseEvent->scenePos();
+      // move generator
+    }
+  }
+  QGraphicsScene::mouseMoveEvent(mouseEvent);
 }

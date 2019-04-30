@@ -6,6 +6,7 @@ GraphicsView::GraphicsView(QGraphicsScene *scene) : QGraphicsView(scene), scene_
   this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   this->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+  this->setMouseTracking(true);
 }
 
 void GraphicsView::resizeEvent(QResizeEvent *event) {

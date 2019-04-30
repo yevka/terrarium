@@ -1,6 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+#include <QObject>
 #include <QGraphicsScene>
 #include "cell.h"
 
@@ -12,10 +13,11 @@ class Scene : public QGraphicsScene {
   void setBoard(QPixmap pix);
   void addCell(const Cell cell);
 
- protected:
-  virtual void mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent);
+ private:
+  void mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent) override;
+  void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
 
-private:
+ private:
   QVector<QPointF> coordinatesCells(const QPointF& startPoint,
                                     const QSize& cell);
 
