@@ -70,14 +70,3 @@ void Scene::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent) {
   }
   QGraphicsScene::mousePressEvent(mouseEvent);
 }
-
-void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) {
-  for (int i = 0; i < 32; ++i) {
-    QPointF point = cell[i].mapFromScene(mouseEvent->scenePos());
-    if (cell[i].contains(point)) {
-      qDebug() << "point: " << mouseEvent->scenePos();
-      // move generator
-    }
-  }
-  QGraphicsScene::mouseMoveEvent(mouseEvent);
-}

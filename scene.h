@@ -15,9 +15,8 @@ class Scene : public QGraphicsScene {
 
  private:
   void mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent) override;
-  void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) override;
 
- private:
+private:
   QVector<QPointF> coordinatesCells(const QPointF& startPoint,
                                     const QSize& cell);
 
