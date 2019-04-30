@@ -1,7 +1,5 @@
 #include "cell.h"
 
-#include <QDebug>
-
 Cell::Cell() {
   ws = new QGraphicsPixmapItem;
   ws->setShapeMode(QGraphicsPixmapItem::MaskShape);
@@ -83,11 +81,11 @@ void Cell::setCell(const uchar &cell) {
 }
 
 void Cell::setLastMove(bool val) {
-  val == true ? lastMove->setVisible(true) : lastMove->setVisible(false);
+  lastMove->setVisible(val);
 }
 
 void Cell::setYellowFrame(bool val) {
-  val == true ? yellowFrame->setVisible(true) : yellowFrame->setVisible(false);
+  yellowFrame->setVisible(val);
 }
 
 bool Cell::isLastMove() const { return lastMove->isVisible(); }

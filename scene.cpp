@@ -1,5 +1,4 @@
 #include "scene.h"
-#include <QGraphicsRectItem>
 #include <QGraphicsSceneMouseEvent>
 
 Scene::Scene(QObject* parent) : QGraphicsScene(parent) {
@@ -49,9 +48,6 @@ void Scene::setPosition(const QString& pos) {
 }
 
 void Scene::setBoard(QPixmap pix) {
-  pix = pix.scaled(checkerBoard->boundingRect().size().toSize(),
-    Qt::AspectRatioMode::IgnoreAspectRatio,
-    Qt::TransformationMode::SmoothTransformation);
   fonBoard->setPixmap(pix);
 }
 
@@ -68,9 +64,7 @@ void Scene::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent) {
       QPointF point = cell[i].mapFromScene(mouseEvent->scenePos());
       bool contains = cell[i].contains(point);
       if (contains) {
-        if (!cell[i].isYellowFrame())
-          cell[i].setYellowFrame(true);
-        break;
+        // move generator
       }
     }
   }

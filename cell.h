@@ -34,10 +34,8 @@ class Cell {
  private:
   QGraphicsPixmapItem* ws;
   QGraphicsPixmapItem* wd;
-
   QGraphicsPixmapItem* bs;
   QGraphicsPixmapItem* bd;
-
   QGraphicsPixmapItem* lastMove;
   QGraphicsPixmapItem* yellowFrame;
 };

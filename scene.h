@@ -5,7 +5,6 @@
 #include "cell.h"
 
 class Scene : public QGraphicsScene {
-  Q_OBJECT
  public:
   explicit Scene(QObject* parent = nullptr);
 
@@ -25,7 +24,6 @@ private:
   QGraphicsPixmapItem* fonBoard;
   Cell cell[32];
   QString position;
-
 };
 
 #endif  // SCENE_H
